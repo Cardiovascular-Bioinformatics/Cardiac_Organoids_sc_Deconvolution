@@ -16,16 +16,16 @@ Run from the repository root, in order:
 
 | Script | Purpose | Main outputs |
 |---|---|---|
-| `R/01_reference_atlas_GSE263193.R` | QC, clustering (Louvain, resolution 0.2) and annotation of GSE263193 | Annotated Seurat object; Supp. Fig. 5A–C |
-| `R/02_rctd_full_mode.R` | RCTD full mode; normalisation to proportions | Raw weights, normalised proportions, QC, genes used |
-| `R/03_original_vs_rerun.R` | (Optional) Reproduces the values plotted in the previous figure version and compares them with the rerun | Original weights, concordance |
-| `R/04_figures.R` | Fig. 4G–J, per-group summaries and Welch t-tests | Fig. 4G–J; group summary; statistics |
+| `01_reference_atlas_GSE263193.R` | QC, clustering (Louvain, resolution 0.2) and annotation of GSE263193 | Annotated Seurat object; Supp. Fig. 5A–C |
+| `02_rctd_full_mode.R` | RCTD full mode; normalisation to proportions | Raw weights, normalised proportions, QC, genes used |
+| `03_original_vs_rerun.R` | (Optional) Reproduces the values plotted in the previous figure version and compares them with the rerun | Original weights, concordance |
+| `04_figures.R` | Fig. 4G–J, per-group summaries and Welch t-tests | Fig. 4G–J; group summary; statistics |
 
 ```r
-source("R/01_reference_atlas_GSE263193.R")
-source("R/02_rctd_full_mode.R")
-source("R/03_original_vs_rerun.R")   # optional; requires the original RCTD object
-source("R/04_figures.R")
+source("01_reference_atlas_GSE263193.R")
+source("02_rctd_full_mode.R")
+source("03_original_vs_rerun.R")   # optional; requires the original RCTD object
+source("04_figures.R")
 ```
 
 ## Key settings
@@ -41,17 +41,14 @@ source("R/04_figures.R")
 | Random seed | `20261102` |
 | Statistics | two-sided Welch's t-test, DB vs ND VCO, n = 3 donors per group |
 
-## Note on the previous version of the analysis
-
-The previous figure version plotted `@results$weights` (all cell types, unnormalised) from the original RCTD object. Script 03 reproduces those values and shows that, once normalised, they match the full-mode rerun.
 
 ## Inputs
 
-See `data/README.md`.
+Bulk RNA-seq will be made available upon request after the publication of the manuscript.
 
 ## Outputs included in this repository
 
-`results/` contains the RCTD outputs used for Fig. 4G–J, so they can be inspected without re-running the analysis:
+Result files contains the RCTD outputs used for Fig. 4G–J, so they can be inspected without re-running the analysis:
 
 | File | Content |
 |---|---|
